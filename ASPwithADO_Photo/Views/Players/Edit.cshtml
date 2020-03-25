@@ -1,0 +1,70 @@
+﻿@model ASPwithADO_Photo.Models.Player
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit Player</h1>
+<br />
+<div>
+    @Html.ActionLink("Back to List", "Index", "Players")
+</div>
+<br />
+
+@using (Html.BeginForm("Create", "Players", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+    <div>
+        <div>
+            @Html.HiddenFor(m => m.Id)
+        </div>
+        <div>
+            <label style="font-weight:bold">Player Name</label>
+        </div>
+        <div>
+            @Html.EditorFor(m => m.Name)
+            @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+        </div>
+
+        <div>
+            <label style="font-weight:bold">Date of Birth</label>
+        </div>
+        <div>
+            @Html.EditorFor(m => m.DateOfBirth)
+            @Html.ValidationMessageFor(m => m.DateOfBirth, "", new { @style = "color:red" })
+        </div>
+
+        <div>
+            <label style="font-weight:bold">Age</label>
+        </div>
+        <div>
+            @Html.EditorFor(m => m.Age)
+            @Html.ValidationMessageFor(m => m.Age, "", new { @style = "color:red" })
+        </div>
+
+        <div>
+            <label style="font-weight:bold">Position</label>
+        </div>
+        <div>
+            @Html.EditorFor(m => m.Position)
+            @Html.ValidationMessageFor(m => m.Position, "", new { @style = "color:red" })
+        </div>
+
+        <div>
+
+            @Html.LabelFor(model => model.Photo)
+            <input type="file" name="file" />
+
+        </div>
+        <br />
+        <div>
+            <input type="submit" value="Update" class="btn btn-warning" onclick="return confirm ('Are you sure')" />
+        </div>
+    </div>
+}
+
+<div>
+    <h2>@ViewBag.Msg</h2>
+</div>
+
+
+

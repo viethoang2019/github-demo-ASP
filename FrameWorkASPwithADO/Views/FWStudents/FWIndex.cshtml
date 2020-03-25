@@ -1,0 +1,43 @@
+﻿@model IEnumerable<FrameWorkASPwithADO.Models.FWStudent>
+@{
+    ViewBag.Title = "FWIndex";
+}
+
+<h2>FWIndex - Student List</h2>
+<br />
+<div>
+    @Html.ActionLink("Create New", "Create", "FWStudents")
+</div>
+<br />
+<div>
+    <table class="table">
+        <tr>
+            <th>Student ID</th>
+            <th>Student Name</th>
+            <th>Student Address</th>
+            <th>Gender</th>
+            <th>Birthday</th>
+            <th>Action</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>@item.Address</td>
+                <td>@item.Gender</td>
+                <td>@item.Birthday</td>
+                <td>
+                    @Html.ActionLink("Remove", "Delete", new { id = item.Id }, new { @class = "btn btn-info", onclick = "return confirm('Are you sure')" })|
+                    @Html.ActionLink("Update", "Edit", new { id = item.Id }, new { @class = "btn btn-info" })
+
+                </td>
+            </tr>
+
+        }
+
+
+
+
+    </table>
+</div>

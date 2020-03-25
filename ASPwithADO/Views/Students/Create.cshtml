@@ -1,0 +1,58 @@
+﻿@model ASPwithADO.Models.Student
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create new Student</h1>
+<br />
+<div>
+    @Html.ActionLink("Back to List", "Index", "Students")
+</div>
+<br />
+
+@using (Html.BeginForm())
+{
+
+    <div>
+        <div>
+           <label style="font-weight:bold">Student Name</label>
+        </div>
+        <div>
+            @Html.EditorFor(m => m.Name)
+            @Html.ValidationMessageFor(m => m.Name,"",new {@class="text-danger"})
+        </div>
+
+        <div>
+            <label style="font-weight:bold">Address</label>
+        </div>
+        <div>
+            @Html.EditorFor(m => m.Address)
+            @Html.ValidationMessageFor(m => m.Address,"",new {@style="color:red"})
+        </div>
+
+        <div>
+            <label style="font-weight:bold">Gender</label>
+        </div>
+        <div>
+            @Html.EditorFor(m => m.Gender)
+            @Html.ValidationMessageFor(m => m.Gender,"",new { @style = "color:red" })
+        </div>
+
+        <div>
+            <label style="font-weight:bold">Birthday</label>
+        </div>
+        <div>
+            @Html.EditorFor(m => m.Birthday)
+            @Html.ValidationMessageFor(m => m.Birthday,"",new { @style = "color:red" })
+        </div>
+        <br/>
+        <div>
+            <input type="submit" value="Create new" class="btn btn-info" />
+        </div>
+    </div>
+}
+
+<div>
+    <h2>@ViewBag.Msg</h2>
+</div>
+

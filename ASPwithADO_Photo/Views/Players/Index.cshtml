@@ -1,0 +1,68 @@
+﻿@model IEnumerable<ASPwithADO_Photo.Models.Player>
+@using X.PagedList;
+@using X.PagedList.Mvc.Core;
+
+@{
+    ViewData["Title"] = "Index";
+    var pageList = (IPagedList)ViewBag.page;
+}
+
+<h1>Players  List</h1>
+
+
+<br />
+<div>
+    @Html.ActionLink("Create New", "Create", "Players")
+</div>
+<div>
+    @Html.ActionLink("Search", "Search", "Players")
+</div>
+<br />
+@*<div>
+    <h3> Search By Name</h3>
+    @using (Html.BeginForm())
+    {
+        <input type="text" name="name" placeholder="Enter any character...." />
+
+
+        <input type="submit" value="Search" />
+    }
+</div>*@
+<br />
+<div>
+    <table class="table">
+        <tr>
+            <th>Player ID</th>
+            <th>Player Name</th>
+            <th>Date of Birth</th>
+            <th>Age</th>
+            <th>Position</th>
+            <th>Photo</th>
+        </tr>
+        @foreach (var item in ViewBag.page)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>@item.DateOfBirth</td>
+                <td>@item.Age</td>
+                <td>@item.Position</td>
+                <td><img src="@item.Photo" width="120" height="130" /></td>
+                <td>
+                    @Html.ActionLink("Remove", "Delete", new { id = item.Id }, new { @class = "btn btn-info", onclick = "return confirm('Are you sure')" })|
+                    @Html.ActionLink("Update", "Edit", new { id = item.Id }, new { @class = "btn btn-info" })
+
+                </td>
+            </tr>
+
+        }
+
+
+
+
+    </table>
+</div>
+
+<div>
+    @Html.PagedListPager(pageList, page => Url.Action("Index", new { page }))
+</div>

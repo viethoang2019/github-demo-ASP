@@ -1,0 +1,69 @@
+﻿@model FrameWorkASPwithADO_Photo.Models.FWPlayer
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>FrameWork - Create new Player</h2>
+
+<br />
+<div>
+    @Html.ActionLink("Back to List", "Index", "FWPlayers")
+</div>
+<br />
+
+@using (Html.BeginForm("Create", "FWPlayers", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+    <div>
+        <div>
+            <label style="font-weight:bold">Player Name</label>
+        </div>
+        <div>
+            @Html.EditorFor(m => m.Name)
+            @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+        </div>
+        <br />
+        <div>
+            <label style="font-weight:bold">Date of Birth</label>
+        </div>
+        <div>
+            @Html.EditorFor(m => m.DateOfBirth)
+            @Html.ValidationMessageFor(m => m.DateOfBirth, "", new { @style = "color:red" })
+        </div>
+        <br />
+        <div>
+            <label style="font-weight:bold">Age</label>
+        </div>
+        <div>
+            @Html.EditorFor(m => m.Age)
+            @Html.ValidationMessageFor(m => m.Age, "", new { @style = "color:red" })
+        </div>
+        <br />
+        <div>
+            <label style="font-weight:bold">Position</label>
+        </div>
+        <div>
+            @Html.EditorFor(m => m.Position)
+            @Html.ValidationMessageFor(m => m.Position, "", new { @style = "color:red" })
+        </div>
+        <br />
+        <div>
+
+            <label style="font-weight:bold">Photo</label>
+        </div>
+        <div>
+            <input type="file" name="file" />
+        </div>
+        <br />
+        <div>
+            <input type="submit" value="Create new" class="btn btn-info" />
+        </div>
+    </div>
+}
+
+<div>
+    <h2>@ViewBag.Msg</h2>
+</div>
+
+
+
