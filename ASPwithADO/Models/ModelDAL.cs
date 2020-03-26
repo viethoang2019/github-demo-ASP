@@ -74,7 +74,7 @@ namespace ASPwithADO.Models
         public void Delete(int id)
         {
             try
-            {
+            { // Test Github
                 SqlConnection connection = new SqlConnection(strConnect);
 
                 //string sqlDelete = "DELETE from Student WHERE Id=@studId";
